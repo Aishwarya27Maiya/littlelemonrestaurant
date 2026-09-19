@@ -7,8 +7,12 @@ import Footer from "./files/Footer"
 function App() {
   return (
     <>
-      <Header />
-      <Nav />
+      <div className='top-section'>
+        <div className='container top-content'>
+          <Header />
+          <Nav />
+        </div>
+      </div>
       <Main />
       <Footer />
     </>

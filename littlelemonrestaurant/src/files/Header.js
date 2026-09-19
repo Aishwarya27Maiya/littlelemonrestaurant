@@ -1,9 +1,11 @@
+import Logo from "../images/icons_assets/Logo.svg"
 function Header (){
     return (
         <header>
             <img
-                src="/Users/aishwaryamaiaya/Documents/Course/littleLemonRestaurant/littlelemonrestaurant/src/images/icons_assets/Logo.svg"
+                src={Logo}
                 alt="little lemon logo"
+                className="logo"
             />
         </header>
     );
