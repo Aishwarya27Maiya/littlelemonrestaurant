@@ -177,7 +177,8 @@ button{
   color:#ee9972;
     font-weight: bold;
 }
-.special-card p,a{
+.special-card p,
+.special-card a{
   padding:0 20px 0 20px;
   margin-top:0;
 }
