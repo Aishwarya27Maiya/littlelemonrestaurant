@@ -1,6 +1,7 @@
 import {useState} from "react";
 
 function Bookingform ({availableTimes,dispatch,submitForm}){
+    
     let[date, setDate]=useState("");
     let[time,setTime]=useState("");
     let[guests,setGuests]=useState("1");
@@ -14,7 +15,8 @@ function Bookingform ({availableTimes,dispatch,submitForm}){
             newErrors.date="Please select a date.";
         if(!time)
             newErrors.time="Please select a time.";
-        if(guests<1||guests>10)
+        const guestCount=Number(guests);
+        if(guestCount<1||guestCount>10)
             newErrors.guests="Number of guests can be between 1 and 10";
 
         setErrors(newErrors);
@@ -70,7 +72,6 @@ function Bookingform ({availableTimes,dispatch,submitForm}){
                 <label htmlFor="res-occasion">Occasion</label>
                 <select
                     id="res-occasion"
-                    className={errors.occasion ? "input-error" : ""}
                     name="occasion"
                     value={occasion}
                     onChange={(e)=>setOccasion(e.target.value)}>

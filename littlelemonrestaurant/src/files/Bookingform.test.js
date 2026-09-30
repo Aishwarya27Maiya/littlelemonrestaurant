@@ -45,69 +45,114 @@ test("initializeTimes returns available times",()=>{
     expect(result.length).toBeGreaterThan(0);
 });
 
-test("updateTimes return available time for se;ected date",()=>{
+test("updateTimes return available time for selected date",()=>{
     let state=[];
     let selectedDate=new Date("2026-10-01");
     let result=updateTimes(state,selectedDate);
     expect(result.length).toBeGreaterThan(0);
 })
 
-test("date and time input fields has required attribute",()=>{
-    const availableTimes=["17:00","18:00"];
-    const dispatch=jest.fn();
-    render(<Bookingform 
-        availableTimes={availableTimes} 
-        dispatch={dispatch}/>);
-    const dateInput=screen.getByLabelText("Choose Date");
-    const timeInput=screen.getByLabelText("Choose Time");
-    expect(dateInput).toBeRequired();
-    expect(timeInput).toBeRequired();    
+test("shows validation errors when submit button is clicked with invalid form", () => {
+    const availableTimes = ["17:00", "18:00"];
+    const dispatch = jest.fn();
+    const submitForm = jest.fn();
+
+    render(
+        <Bookingform
+            availableTimes={availableTimes}
+            dispatch={dispatch}
+            submitForm={submitForm}
+        />
+    );
+
+    const submitButton = screen.getByDisplayValue(
+        "Make Your Reservation"
+    );
+
+    fireEvent.click(submitButton);
+
+    expect(
+        screen.getByText("Please select a date.")
+    ).toBeInTheDocument();
+
+    expect(
+        screen.getByText("Please select a time.")
+    ).toBeInTheDocument();
+
+    expect(submitForm).not.toHaveBeenCalled();
 });
 
-test("guests input fiels has correct validation attributes",()=>{
-    let availableTimes=["17:00","18:00"];
-    let dispatch=jest.fn();
-    render(<Bookingform 
-        availableTimes={availableTimes}
-        dispatch={dispatch}
-        />)
-    let result=screen.getByLabelText("Number of guests");
-    expect(result).toHaveAttribute("min","1");
-    expect(result).toHaveAttribute("max","10");
-})
+test("calls submitForm when the form is valid", () => {
+    const availableTimes = ["17:00", "18:00"];
+    const dispatch = jest.fn();
+    const submitForm = jest.fn();
 
-test("Submit button should be disabled when the form is invalid",()=>{
-    const availableTimes=["17:00","18:00"];
-    const dispatch=jest.fn();
-    render(<Bookingform
+    render(
+        <Bookingform
             availableTimes={availableTimes}
-            dispatch={dispatch} 
-            />)
-    let submitButton=screen.getByDisplayValue("Make Your Reservation");
-    expect(submitButton).toBeDisabled();        
+            dispatch={dispatch}
+            submitForm={submitForm}
+        />
+    );
+
+    const dateInput = screen.getByLabelText("Choose Date");
+    const timeInput = screen.getByLabelText("Choose Time");
+    const guestsInput = screen.getByLabelText("Number of guests");
+    const submitButton = screen.getByDisplayValue(
+        "Make Your Reservation"
+    );
+
+    fireEvent.change(dateInput, {
+        target: { value: "2026-10-01" }
+    });
+
+    fireEvent.change(timeInput, {
+        target: { value: "17:00" }
+    });
+
+    fireEvent.change(guestsInput, {
+        target: { value: "2" }
+    });
+
+    fireEvent.click(submitButton);
+
+    expect(submitForm).toHaveBeenCalledWith({
+        date: "2026-10-01",
+        time: "17:00",
+        guests: "2",
+        occasion: ""
+    });
 });
 
-test("Submit button is enabled when the form is valid",()=>{
-    const availableTimes=["17:00","18:00"];
-    const dispatch=jest.fn();
-    render(<Bookingform
-            availableTimes={availableTimes}
-            dispatch={dispatch} 
-            />)
-    let dateInput=screen.getByLabelText("Choose Date");
-    let guestsInput=screen.getByLabelText("Number of guests");
-    let timeInput=screen.getByLabelText("Choose Time");
-    fireEvent.change(dateInput,{
-        target:{value:"2026-10-01"}
-    });
-    fireEvent.change(timeInput,{
-        target:{value:"17:00"}
-    });
-    fireEvent.change(guestsInput,{
-        target:{value:"2"}
-    });
-    
-    let submitButton=screen.getByDisplayValue("Make Your Reservation");
+test("shows guest error when number of guests is outside the allowed range", () => {
+    const availableTimes = ["17:00", "18:00"];
+    const dispatch = jest.fn();
+    const submitForm = jest.fn();
 
-    expect(submitButton).toBeEnabled();        
+    render(
+        <Bookingform
+            availableTimes={availableTimes}
+            dispatch={dispatch}
+            submitForm={submitForm}
+        />
+    );
+
+    const guestsInput = screen.getByLabelText("Number of guests");
+    const submitButton = screen.getByDisplayValue(
+        "Make Your Reservation"
+    );
+
+    fireEvent.change(guestsInput, {
+        target: { value: "0" }
+    });
+
+    fireEvent.click(submitButton);
+
+    expect(
+        screen.getByText(
+            "Number of guests can be between 1 and 10"
+        )
+    ).toBeInTheDocument();
+
+    expect(submitForm).not.toHaveBeenCalled();
 });

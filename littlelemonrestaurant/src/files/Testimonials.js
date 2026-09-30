@@ -1,4 +1,4 @@
-import customer1 from "../images/icons_assets/person1.jpeg"
+import customer1 from "../images/icons_assets/person7.avif"
 import customer2 from "../images/icons_assets/person2.avif"
 import customer3 from "../images/icons_assets/person3.jpeg"
 
@@ -11,45 +11,34 @@ function Testimonials(){
                     <article className="testimonial-card">
                         <div className="rating">⭐️⭐️⭐️⭐️⭐️</div>
                         <div className="testimonial-content">
-                            <div className="testimonial-image">
                                 <img
+                                    className="testimonial-image"
                                     src={customer1}
-                                    alt="customer1"
+                                    alt="Rama"
                                 />
-                            </div>
-                            <div className="testimonial-text">
                                 <h3>Rama</h3>
-                            </div>
                         </div>
                         <p>Great food and wonderful service!</p>
                     </article>
                     <article className="testimonial-card">
                         <div className="rating">⭐️⭐️⭐️⭐️</div>
                         <div className="testimonial-content">
-                            <div className="testimonial-image">
                                 <img
                                     src={customer2}
-                                    alt="customer2"
+                                    alt="Sita"
                                 />
-                            </div>
-                            <div className="testimonial-text">
                                 <h3>Sita</h3>
-                            </div>
                         </div>
                         <p>Great food and wonderful service!</p>
                     </article>
                     <article className="testimonial-card">
                         <div className="rating">⭐️⭐️⭐️⭐️</div>
                         <div className="testimonial-content">
-                            <div className="testimonial-image">
                                 <img
                                     src={customer3}
-                                    alt="customer3"
+                                    alt="Lakshmana"
                                 />
-                            </div>
-                            <div className="testimonial-text">
-                                <h3>Sita</h3>
-                            </div>
+                                <h3>Lakshmana</h3>
                         </div>
                         <p>Great food and wonderful service!</p>
                     </article>

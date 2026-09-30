@@ -5,7 +5,6 @@ function Header (){
             <img
                 src={Logo}
                 alt="little lemon logo"
-                className="logo"
             />
         </header>
     );

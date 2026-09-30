@@ -19,8 +19,8 @@ img{
   width:100%;
   max-width:1200px;
   margin:0 auto;
-  padding-left:40px;
-  padding-right:40px;
+  /* padding-left:40px;
+  padding-right:40px; */
 }
 h1,
 h2,
@@ -73,23 +73,23 @@ nav ul{
   gap:30px;
 }
 
-nav a{
-  color:black;
+.nav-link{
+  color:rgb(57, 77, 57);
   text-decoration: none;
   font-family: "Karla", sans-serif;
   font-weight: 700;
   font-size: 16px;
 }
 
-nav a:hover{
-  color:rgb(57, 77, 57);
+.nav-link:hover{
+  color:rgb(255, 190, 24);
 }
 
 /*Hero*/
 
 .hero-section{
   background-color: rgb(57, 77, 57);
-  height:250px;
+  height:260px;
 }
 .hero{
   display:flex;
@@ -106,20 +106,12 @@ nav a:hover{
 
 .hero-content h1{
   color:rgb(255, 190, 24);
-
-  
-}
-.hero-content h2{
-  color: #ffffff;
-
-  
 }
 .hero-content p{
-  max-width: 300px;
+  max-width: 400px;
 }
 .hero-image{
   flex:1;
-  
 }
 .hero-image img{
   width:100%;
@@ -129,16 +121,6 @@ nav a:hover{
   max-width:250px;
   right:30px;
   position: absolute;
-}
-
-button{
-  background-color: rgb(255, 190, 24);
-  color:black;
-  border-radius: 16px;
-  padding:10px 20px;
-  border: none;
-  cursor: pointer;
-  font-weight:700;
 }
 
 .reserve-button {
@@ -151,6 +133,7 @@ button{
     font-weight: bold;
     font-size: 16px;
     cursor: pointer;
+    margin-top: 10px;
 }
 
 .reserve-button:hover {
@@ -158,6 +141,17 @@ button{
 }
 
 /*Highlights*/
+
+button{
+  background-color: rgb(255, 190, 24);
+  color:black;
+  border-radius: 16px;
+  padding:10px 20px;
+  border: none;
+  cursor: pointer;
+  font-weight:700;
+}
+
 .specials{
   display:grid;
   grid-template-columns:repeat(3,1fr);
@@ -169,6 +163,11 @@ button{
   overflow: hidden;
   background-color: #edefee;
   border-radius: 16px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: box-shadow 0.3s ease;
+}
+.special-card:hover{
+   box-shadow: 0 6px 15px rgb(255, 190, 24);
 }
 .special-card > img{
   width:100%;
@@ -187,24 +186,25 @@ button{
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding:20px 20px 20px 20px;
+  padding: 20px;
 }
 .dish-title span{
   color:#ee9972;
-    font-weight: bold;
+  font-weight: bold;
 }
 .special-card p,
 .special-card a{
   padding:0 20px 0 20px;
-  margin-top:0;
 }
 .special-card a{
   text-decoration: none;
   color:rgb(57, 77, 57);
   font-weight: 700;
+  margin-top: 10px;
+  display: inline-block;
 }
 .special-card a:hover{
-  color:rgb(255, 190, 24)
+  color:rgb(255, 190, 24);
 }
 /*Testimonials*/
 
@@ -216,33 +216,25 @@ button{
   grid-template-columns: repeat(3,1fr);
   gap:20px;
   padding-top:20px;
+  text-align: center;
 }
-.testimonial-content{
-  display: flex;
-  align-items:center;
-  gap:20px;
-}
+
 .testimonial-card {
   padding: 20px;
   border-radius: 16px;
   background-color: #f5f5f5;
 }
-.testimonials > .container > h2 {
-  text-align: center;
-}
-.testimonial-image{
+
+.testimonial-image img{
   width: 100%;
   height:100%;
   object-fit: cover;
 }
-.testimonials p{
-  text-align: center;
-  padding-top:20px;
-}
+
 .rating{
   margin-bottom: 10px;
-  padding-left:10px; ;
 }
+
 /*About*/
 .about-contents{
   display: flex;
@@ -253,7 +245,7 @@ button{
 .about-images{
   position: relative;
   width:400px;
-  height:350px;
+  height:300px;
 }
 
 .about-images img{
@@ -264,14 +256,14 @@ button{
 }
 .about-images img:first-child{
   width: 200px;
-  height: 240px;
+  height: 200px;
   top: 70px;
   right:120px;
   z-index: 1;
 }
 .about-images img:last-child{
   width: 200px;
-  height: 240px;
+  height: 200px;
   right: 0;
   top: 0;
   z-index: 2;
@@ -281,20 +273,17 @@ button{
   padding-bottom: 10px;
   margin: 0;
 }
-.about-text h2{
-  color:rgb(57, 77, 57)
-}
 .about-text{
-  max-width: 350px;
+  max-width: 450px;
   text-align: left;
+  color:rgb(57, 77, 57);
 }
-
 
 /*Footer*/
 .footer-content {
     display: grid;
-    grid-template-columns: 100px repeat(3, 1fr);
-    gap: 70px;
+    grid-template-columns: 150px repeat(3, 1fr);
+    gap: 40px;
     justify-content: center;
     text-align: center;
     background-color: rgb(57, 77, 57);
@@ -302,17 +291,10 @@ button{
     color: white;
     cursor: pointer;
 }
-
-.footer-logo {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-}
-
 .footer-logo img {
     width: 100px;
-    height: auto;
-    flex-shrink: 0;
+    height: 120px;
+    object-fit: contain;
 }
 
 .footer-column a {
@@ -333,11 +315,6 @@ button{
     min-height: 70vh;
     padding: 60px 20px;
     background-color: #f7f7f7;
-}
-
-.booking-page .container {
-    max-width: 700px;
-    margin: 0 auto;
 }
 
 .booking-page h1 {
@@ -467,14 +444,15 @@ button{
 /* =========================
 Booking form error messages
 */
-.error-message {
-    color: #d32f2f ;
-    font-size: 14px;
-    margin: 0 0 8px 0;
-    font-weight: 500;
-}
-.input-error {
-    border: 2px solid #d32f2f !important;
+.booking-page .error-message {
     color: #d32f2f;
+    font-size: 14px;
+    margin: 0 0 8px;
+    font-weight: 500;
+    text-align: left;
+    line-height: 1.5;
 }
 
+.booking-form .input-error {
+    border: 2px solid #d32f2f;
+}
