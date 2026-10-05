@@ -7,12 +7,11 @@ function ScrollToHash() {
     useEffect(() => {
         if (location.hash) {
             const element = document.getElementById(
-                location.hash.substring(1)
-            );
+                location.hash.substring(1));
 
             if (element) {
                 element.scrollIntoView({
-                    behavior: "smooth"
+                    behaviour: "smooth"
                 });
             }
         }

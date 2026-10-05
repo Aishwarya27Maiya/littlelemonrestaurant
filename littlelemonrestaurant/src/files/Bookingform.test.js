@@ -47,7 +47,7 @@ test("initializeTimes returns available times",()=>{
 
 test("updateTimes return available time for selected date",()=>{
     let state=[];
-    let selectedDate=new Date("2026-10-01");
+    let selectedDate=new Date("2026-10-08");
     let result=updateTimes(state,selectedDate);
     expect(result.length).toBeGreaterThan(0);
 })
