@@ -2,42 +2,7 @@ import {screen,render,fireEvent} from "@testing-library/react";
 import Bookingform from "./Bookingform";
 import { initializeTimes, updateTimes } from "./Main";
 
-// test("Renders the Bookingform choose date label",()=>{
-//     const availableTimes=[ 
-//         "17:00",
-//         "18:00",
-//         "19:00",
-//         "20:00",
-//         "21:00",
-//         "22:00"];
-//     const dispatch =jest.fn();
-    
-//     render(<Bookingform 
-//                 availableTimes={availableTimes}
-//                 dispatch={dispatch}
-//             />);
-//     const labelElement=screen.getByLabelText("Choose Date");
-//     expect(labelElement).toBeInTheDocument();    
-// });
 
-// test("Dispatches when date is changed",()=>{
-//     const availableTimes=[
-//         "17:00",
-//         "18:00",
-//         "19:00",
-//         "20:00",
-//         "21:00",
-//         "22:00"
-//         ];
-//     const dispatch=jest.fn();
-//     render(<Bookingform availableTimes={availableTimes} dispatch={dispatch}/>);
-    
-//     const dataInput=screen.getByLabelText("Choose Date");
-//     fireEvent.change(dataInput,{
-//         target:{value:"2026-10-01"}
-//     });
-//     expect(dispatch).toHaveBeenCalledWith("2026-10-01");
-// });
 
 test("initializeTimes returns available times",()=>{
     let result=initializeTimes();
@@ -156,3 +121,40 @@ test("shows guest error when number of guests is outside the allowed range", () 
 
     expect(submitForm).not.toHaveBeenCalled();
 });
+
+// test("Renders the Bookingform choose date label",()=>{
+//     const availableTimes=[ 
+//         "17:00",
+//         "18:00",
+//         "19:00",
+//         "20:00",
+//         "21:00",
+//         "22:00"];
+//     const dispatch =jest.fn();
+    
+//     render(<Bookingform 
+//                 availableTimes={availableTimes}
+//                 dispatch={dispatch}
+//             />);
+//     const labelElement=screen.getByLabelText("Choose Date");
+//     expect(labelElement).toBeInTheDocument();    
+// });
+
+// test("Dispatches when date is changed",()=>{
+//     const availableTimes=[
+//         "17:00",
+//         "18:00",
+//         "19:00",
+//         "20:00",
+//         "21:00",
+//         "22:00"
+//         ];
+//     const dispatch=jest.fn();
+//     render(<Bookingform availableTimes={availableTimes} dispatch={dispatch}/>);
+    
+//     const dataInput=screen.getByLabelText("Choose Date");
+//     fireEvent.change(dataInput,{
+//         target:{value:"2026-10-01"}
+//     });
+//     expect(dispatch).toHaveBeenCalledWith("2026-10-01");
+// });
